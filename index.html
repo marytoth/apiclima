@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prueba con Fetch</title>
+    <link href="estilo.css" rel="stylesheet" />
+    <!-- Pequeña hoja de estilos para dar formato-->
+    <script>
+      const url =
+        "http://api.openweathermap.org/data/2.5/weather?q=Montevideo,uy&APPID=e17dd8d188bceccd26d58eacc51fc7f2";
+      //dirección de la API. Puede ser la ruta a un archivo json. CREA LA TUYA. No robarsela al teacher
+
+      fetch(url) //Realizamos el fetch que devolverá una promesa
+        .then((respuesta) => respuesta.json()) //Obtenemos una promesa que trataremos como json
+        .then((datos) => {
+          //obtenemos una nueva promesa, pero los datos ya están como json.
+          document.getElementById("ciudad").innerHTML =
+            datos.name + ", " + datos.sys.country; //escribo los datos del país
+          document.getElementById("temp").innerHTML =
+            (datos.main.temp - 273.15).toFixed(1) + "ºC"; //escribo la temperatura. la convierto de kelvin a celsius
+          document.getElementById("imagen").src =
+            "http://openweathermap.org/img/wn/" +
+            datos.weather[0].icon +
+            ".png"; //imagen
+          document.getElementById("feels_like").innerHTML =
+            (datos.main.feels_like - 273.15).toFixed(1) + "ºC"; //sensacion termica
+          document.getElementById("humidity").innerHTML =
+            datos.main.humidity + "%"; //la pinshi humedad
+        });
+    
+        (error) => alert('Hubo un error:' + error.message);
+
+    </script>
+  </head>
+  <body>
+    <div>
+      <span id="ciudad"></span><br />
+      <span id="temp"> </span>
+      <img id="imagen" src="" />
+      <br />
+      <span id="feels_like"></span>
+      <br />
+      <span id="humidity"></span>
+    </div>
+  </body>
+</html>
