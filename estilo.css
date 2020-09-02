@@ -1,0 +1,42 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+div {
+    background-color: yellowgreen;
+    width: fit-content;
+    height: fit-content;
+    float: inherit;
+}
+#ciudad {
+    font-size: xx-large;
+    color: rgb(4, 4, 80) ;
+    font-weight: bold;
+}
+#temp {
+    font-size: large;
+    color: rgb(2, 59, 2);
+    font-weight: bolder;
+    animation: blinker 1s infinite;
+    
+}
+#humidity {
+    font-size: large;
+    color: rgb(2, 59, 2);
+    font-weight: bolder;
+    
+}
+#feels_like {
+    font-size: large;
+    color: rgb(2, 59, 2);
+    font-weight: bolder;
+    
+}
+
+img { align-content: center;
+      width: 35px;
+    height: 35px;}
+@keyframes blinker {
+    50% {
+    opacity: 0;
+    }
+    }
